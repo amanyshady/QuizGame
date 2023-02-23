@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  StartVC.swift
 //  QuizGame
 //
 //  Created by Amany Shady on 22/02/2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class StartVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
