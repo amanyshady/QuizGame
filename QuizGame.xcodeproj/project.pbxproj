@@ -19,6 +19,10 @@
 		63128D6829A660770044077F /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63128D6729A660770044077F /* QuizModel.swift */; };
 		63128D6A29A662AC0044077F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63128D6929A662AC0044077F /* NetworkManager.swift */; };
 		63128D6E29A757AF0044077F /* StartVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63128D6D29A757AF0044077F /* StartVM.swift */; };
+		63128D7129A7ADEE0044077F /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63128D7029A7ADEE0044077F /* Box.swift */; };
+		63A6492029AB583D0019E8CB /* QuizVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6491F29AB583D0019E8CB /* QuizVC.swift */; };
+		63A6492229AB66800019E8CB /* QuizTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6492129AB66800019E8CB /* QuizTableViewCell.swift */; };
+		63A6492429AB75590019E8CB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A6492329AB75590019E8CB /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,10 @@
 		63128D6729A660770044077F /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
 		63128D6929A662AC0044077F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		63128D6D29A757AF0044077F /* StartVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVM.swift; sourceTree = "<group>"; };
+		63128D7029A7ADEE0044077F /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		63A6491F29AB583D0019E8CB /* QuizVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizVC.swift; sourceTree = "<group>"; };
+		63A6492129AB66800019E8CB /* QuizTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizTableViewCell.swift; sourceTree = "<group>"; };
+		63A6492329AB75590019E8CB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +113,7 @@
 		63128D3529A64A160044077F /* QuizGame */ = {
 			isa = PBXGroup;
 			children = (
+				63128D6F29A7ADCC0044077F /* Utlities */,
 				63128D6C29A757780044077F /* ViewModel */,
 				63128D6B29A756AC0044077F /* ViewController */,
 				63128D6629A660360044077F /* Model */,
@@ -148,6 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				63128D3A29A64A160044077F /* StartVC.swift */,
+				63A6491F29AB583D0019E8CB /* QuizVC.swift */,
+				63A6492129AB66800019E8CB /* QuizTableViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -158,6 +169,15 @@
 				63128D6D29A757AF0044077F /* StartVM.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		63128D6F29A7ADCC0044077F /* Utlities */ = {
+			isa = PBXGroup;
+			children = (
+				63128D7029A7ADEE0044077F /* Box.swift */,
+				63A6492329AB75590019E8CB /* Extensions.swift */,
+			);
+			path = Utlities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,7 +312,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				63128D6829A660770044077F /* QuizModel.swift in Sources */,
+				63A6492229AB66800019E8CB /* QuizTableViewCell.swift in Sources */,
+				63A6492029AB583D0019E8CB /* QuizVC.swift in Sources */,
+				63128D7129A7ADEE0044077F /* Box.swift in Sources */,
 				63128D3B29A64A160044077F /* StartVC.swift in Sources */,
+				63A6492429AB75590019E8CB /* Extensions.swift in Sources */,
 				63128D6A29A662AC0044077F /* NetworkManager.swift in Sources */,
 				63128D3729A64A160044077F /* AppDelegate.swift in Sources */,
 				63128D3929A64A160044077F /* SceneDelegate.swift in Sources */,

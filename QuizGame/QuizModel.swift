@@ -9,21 +9,49 @@ import Foundation
 
 struct QuizModel : Codable {
     
-    let results : [QuestionItem]?
+    var results : [QuestionItem]?
 }
 
 struct QuestionItem : Codable {
     
-    let id : Int?
-    let question : String?
-    let correctAnswer : String?
-    let incorrectAnswers : [String]?
+    var question : String?
+    var correctAnswer : String?
+    var incorrectAnswers : [String]?
     
     enum CodingKeys:String , CodingKey {
-        case id
         case question
         case correctAnswer = "correct_answer"
         case incorrectAnswers = "incorrect_answers"
     }
     
+}
+
+struct OptionAnsItem {
+    
+    var id : Int
+    var answerTxt : String
+    var isCorrect : Bool = false
+    
+    init(id: Int, answerTxt: String , isCorrect  : Bool) {
+        
+        self.id = id
+        self.answerTxt = answerTxt
+        self.isCorrect = isCorrect
+       
+    }
+
+}
+
+struct QuizQuestion {
+    
+    var question : String
+    var correctAnswer : String
+    var answersOptions : [OptionAnsItem]
+    
+    init(question: String, correctAnswer: String, answersOptions: [OptionAnsItem] ) {
+    
+        self.question = question
+        self.correctAnswer = correctAnswer
+        self.answersOptions = answersOptions
+    }
 }

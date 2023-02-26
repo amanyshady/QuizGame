@@ -7,28 +7,40 @@
 
 import Foundation
 
+
+enum ApiError : String , Error {
+    
+    case noData = "no Data"
+    case errorParsigData = "Can't parse data"
+    case invalidUrl = "your url is invalid"
+}
+
 protocol NetworkManagerProtocol {
     
-    func fetchData(completion : @escaping ([QuestionItem]?) -> ())
+    func fetchData(completion : @escaping (_ quizeList : [QuestionItem]? , _ error : ApiError?) -> ())
 }
 
 class NetworkManager : NetworkManagerProtocol {
     
     
-    func fetchData(completion : @escaping ([QuestionItem]?) -> ()) {
+    func fetchData(completion : @escaping (_ quizeList : [QuestionItem]? , _ error : ApiError?) -> ()) {
         
         guard let url = URL(string: "https://opentdb.com/api.php?amount=5&category=27&difficulty=easy&type=multiple") else {
+            
+            completion(nil, .invalidUrl)
             return
         }
         
-       let task =  URLSession.shared.dataTask(with: url) { data, response, error in
+       let task =  URLSession.shared.dataTask(with: url) { data, _, _ in
             
-            if let error = error {
-                print("there is an error \(error.localizedDescription)")
-                completion(nil)
+         
+            
+            guard let data = data else {
+                
+                completion(nil, .noData)
+                return
+                
             }
-            
-            guard let data = data else {return}
             
             print("return data \(data)")
            
@@ -36,16 +48,19 @@ class NetworkManager : NetworkManagerProtocol {
               
                let result = try JSONDecoder().decode(QuizModel.self, from: data)
                
-               completion(result.results)
+               guard let quesList = result.results else {return}
+            
+               completion(quesList , nil)
                
            }catch let jsonError {
                
                print(jsonError)
-               completion(nil)
+               completion(nil , .errorParsigData)
            }
            
         }
         
         task.resume()
     }
+
 }

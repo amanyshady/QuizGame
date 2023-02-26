@@ -30,8 +30,29 @@ class StartVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initVM()
+        
     }
 
+    func initVM() {
+        
+        viewModel.quizQuesList.bind { [weak self] _ in
+            
+            guard let quizList = self?.viewModel.quizQuesList.value else {return}
+            
+            if quizList.count > 0 {
+                
+               
+                guard let quizVc = self?.storyboard?.instantiateViewController(withIdentifier: "QuizVC") as? QuizVC else{return}
+                 
+                quizVc.viewModel = self?.viewModel
+                
+                self?.navigationController?.pushViewController(quizVc, animated: true)
+            }
+        }
+    }
+    
+    
     
     
     @IBAction func startQuizAction(_ sender: UIButton) {
