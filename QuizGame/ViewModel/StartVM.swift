@@ -15,6 +15,8 @@ class StartVM {
     
     var questionSelected : Int  = 0
     
+    var selectCorrectAnswer : Box<Bool> = Box(value: nil)
+    
     
     init(networkManager: NetworkManagerProtocol = NetworkManager()) {
         self.networkManager = networkManager
@@ -50,14 +52,14 @@ class StartVM {
         return ""
     }
     
-    func getSelectedOptionAnswers () -> [OptionAnsItem] {
+    func getSelectedOptionAnswers (index : Int) -> OptionAnsItem {
         
         if  let quizarray = self.quizQuesList.value {
             
-            return quizarray[self.questionSelected].answersOptions
+            return quizarray[self.questionSelected].answersOptions[index]
         }
         
-        return [OptionAnsItem]()
+        return OptionAnsItem()
     }
     
     func getSelectedOptionAnswersCount () -> Int {
@@ -68,6 +70,14 @@ class StartVM {
         }
         
         return 0
+    }
+    
+    func userSelectAnswer(selectedAnswer : Int) {
+     
+        let selectedAnswer = getSelectedOptionAnswers(index: selectedAnswer)
+        
+        self.selectCorrectAnswer.value = selectedAnswer.isCorrect
+        
     }
     
     func getAllQuestionsNumCount () -> Int {
@@ -86,7 +96,7 @@ class StartVM {
             
             if let error = error {
     
-                fatalError(error.rawValue)
+                print("Data error",error)
             }
             
             guard let returnQuesArray = questionArray else {return}
@@ -136,5 +146,6 @@ class StartVM {
                 
                
     }
+    
     
 }

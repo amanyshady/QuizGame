@@ -19,7 +19,7 @@ class QuizTableViewCell: UITableViewCell {
         didSet {
             
             quizLbl.text = quizeOptionData?.answerTxt
-            quizLbl.tag = quizeOptionData!.id
+            quizLbl.tag = quizeOptionData!.id!
             
             
         }

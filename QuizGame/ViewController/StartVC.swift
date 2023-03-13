@@ -36,9 +36,9 @@ class StartVC: UIViewController {
 
     func initVM() {
         
-        viewModel.quizQuesList.bind { [weak self] _ in
+        viewModel.quizQuesList.bind { [weak self] quizList in
             
-            guard let quizList = self?.viewModel.quizQuesList.value else {return}
+            guard let quizList = quizList else {return}
             
             if quizList.count > 0 {
                 

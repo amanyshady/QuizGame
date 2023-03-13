@@ -31,7 +31,31 @@ class QuizVC: UIViewController {
         self.tableView.dataSource = self
         
         setQuesLblData()
+        initVM()
     
+    }
+    
+    func initVM() {
+        
+        viewModel?.selectCorrectAnswer.bind { [weak self] correctAnswer in
+            
+            guard let correctAnswer = correctAnswer else {return}
+            
+            var alertMsg = ""
+            
+            if correctAnswer {
+               
+                alertMsg = "Correct Answer"
+            }else {
+                
+                alertMsg = "Wrong Answer"
+            }
+            
+            let alert = UIAlertController(title: "Alert!", message: alertMsg, preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self?.present(alert, animated: true)
+        }
     }
     
     func setQuesLblData() {
@@ -100,12 +124,18 @@ extension QuizVC : UITableViewDataSource , UITableViewDelegate {
         guard let viewModel = self.viewModel else {return QuizTableViewCell()}
         
         
-        let answersOptionList  = viewModel.getSelectedOptionAnswers()
-        
-        cell.quizeOptionData = answersOptionList[indexPath.row]
-        
+        cell.quizeOptionData  = viewModel.getSelectedOptionAnswers(index: indexPath.row)
         
         return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+       
+        
+        viewModel?.userSelectAnswer(selectedAnswer: indexPath.row)
+        
     }
     
     

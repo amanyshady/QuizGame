@@ -28,11 +28,11 @@ struct QuestionItem : Codable {
 
 struct OptionAnsItem {
     
-    var id : Int
-    var answerTxt : String
-    var isCorrect : Bool = false
+    var id : Int?
+    var answerTxt : String?
+    var isCorrect : Bool? = false
     
-    init(id: Int, answerTxt: String , isCorrect  : Bool) {
+    init(id: Int? = nil, answerTxt: String? = nil , isCorrect  : Bool? = nil) {
         
         self.id = id
         self.answerTxt = answerTxt
